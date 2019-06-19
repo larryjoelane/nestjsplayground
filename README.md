@@ -28,4 +28,8 @@ by running npm start in the root of the project(it will run on localhost:3000).
 Once the server is running you can run the client angular app by running npm start in the
 client folder(make sure it is from another terminal than the one you use to run the service). Once running you can access the app from localhost:4200
 
+### helpful links
+
+https://auth0.com/blog/full-stack-typescript-apps-part-1-developing-backend-apis-with-nestjs/
+
 
