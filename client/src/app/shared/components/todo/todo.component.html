@@ -1,0 +1,9 @@
+<ul>
+  <li *ngFor="let todo of todos" #todoData>
+    <a href="javascript:void(0)" *ngIf="!todo.isComplete">
+      <input type="text" placeholder="Please enter a title" (keyup)="todo.label=label.value; updateTodo($event, todo )" value="{{todo?.label}}" #label>
+      <span class="isComplete" (click)="todo.isComplete=true; completeTodo($event, todo)">&#10004;</span>
+      <textarea placeholder="Please enter a description" (keyup)="todo.description=description.value; updateTodo($event, todo)" #description>{{ todo?.description }}</textarea>
+    </a>
+  </li>
+</ul>
