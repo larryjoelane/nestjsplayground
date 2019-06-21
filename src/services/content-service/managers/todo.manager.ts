@@ -16,7 +16,7 @@ export class TodoManager {
     return this.filterTodosByDate(todos);
   }
 
-  async createLink(todo: TodoModel): Promise<TodoModel> {
+  async createTodo(todo: TodoModel): Promise<TodoModel> {
     return await this.todoRepository.save(todo);
   }
 
@@ -35,7 +35,7 @@ export class TodoManager {
     };
     await this.todoRepository.update(id, todo);
 
-    return todoResponse as TodoEntity;
+    return todoResponse;
   }
 
   private filterTodosByDate(todo: Todo[]) {

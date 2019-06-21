@@ -19,7 +19,7 @@ export class TodoController {
 
   @Post()
   async createTodo(@Body() todo: UpdateTodo) {
-    return await this.todoManager.createLink(todo);
+    return await this.todoManager.createTodo(todo);
   }
 
   @Delete(':id')
