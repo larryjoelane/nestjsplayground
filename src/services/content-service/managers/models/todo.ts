@@ -1,6 +1,7 @@
 
 export class TodoModel {
-  id: number = null;
+
+  id: number;
 
   label: string;
 

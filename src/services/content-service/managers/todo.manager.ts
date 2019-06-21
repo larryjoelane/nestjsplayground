@@ -28,8 +28,14 @@ export class TodoManager {
     return await this.todoRepository.findOne(id);
   }
 
-  async updateTodo(id: number, todo: Todo): Promise<UpdateResult> {
-    return await this.todoRepository.update(id, todo);
+  async updateTodo(id: number, todo: Todo): Promise<TodoModel> {
+    const todoResponse = {
+      id,
+      ...todo,
+    };
+    await this.todoRepository.update(id, todo);
+
+    return todoResponse as TodoEntity;
   }
 
   private filterTodosByDate(todo: Todo[]) {

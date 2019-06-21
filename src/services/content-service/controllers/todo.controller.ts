@@ -3,6 +3,8 @@ import { TodoManager } from '../managers/todo.manager';
 import { Todo } from './contracts/todo';
 import { TodoModel } from '../managers/models/todo';
 import { UpdateResult } from 'typeorm';
+import { ApiResponse } from '@nestjs/swagger';
+import { UpdateTodo } from './contracts/update-todo';
 
 @Controller('todo')
 export class TodoController {
@@ -16,7 +18,7 @@ export class TodoController {
   }
 
   @Post()
-  async createTodo(@Body() todo: Todo) {
+  async createTodo(@Body() todo: UpdateTodo) {
     return await this.todoManager.createLink(todo);
   }
 
@@ -31,7 +33,8 @@ export class TodoController {
   }
 
   @Put(':id')
-  async updateTodo(@Param('id') id: number, @Body() todo: Todo): Promise<UpdateResult> {
+  @ApiResponse({ status: 201, description: 'The todo has been successfully created.'})
+  async updateTodo(@Param('id') id: number, @Body() todo: Todo): Promise<UpdateTodo> {
     return await this.todoManager.updateTodo(id, todo);
   }
 }

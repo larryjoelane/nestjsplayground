@@ -17,8 +17,8 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
-  // tslint:disable-next-line:only-arrow-functions
-  app.listen(port, function() {
+
+  app.listen(port, () => {
     // tslint:disable-next-line:no-console
     console.log('Listening on ' + port);
   });

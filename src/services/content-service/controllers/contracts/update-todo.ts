@@ -1,7 +1,6 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { PrimaryColumn } from 'typeorm';
 
-export class Todo {
+export class UpdateTodo {
 
   @ApiModelProperty()
   id: number;
