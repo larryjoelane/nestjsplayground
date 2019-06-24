@@ -1,10 +1,9 @@
 import { Controller, Get, Post, Body, Delete, Param, Put } from '@nestjs/common';
 import { TodoManager } from '../managers/todo.manager';
 import { Todo } from './contracts/todo';
-import { TodoModel } from '../managers/models/todo';
-import { UpdateResult } from 'typeorm';
 import { ApiResponse } from '@nestjs/swagger';
 import { UpdateTodo } from './contracts/update-todo';
+import { CreateTodo } from './contracts/create-todo';
 
 @Controller('todo')
 export class TodoController {
@@ -18,7 +17,8 @@ export class TodoController {
   }
 
   @Post()
-  async createTodo(@Body() todo: UpdateTodo) {
+  @ApiResponse({ status: 201, description: 'The todo has been successfully created.' })
+  async createTodo(@Body() todo: CreateTodo) {
     return await this.todoManager.createTodo(todo);
   }
 
@@ -33,8 +33,7 @@ export class TodoController {
   }
 
   @Put(':id')
-  @ApiResponse({ status: 201, description: 'The todo has been successfully created.'})
-  async updateTodo(@Param('id') id: number, @Body() todo: Todo): Promise<UpdateTodo> {
+  async updateTodo(@Param('id') id: number, @Body() todo: Todo): Promise<Todo> {
     return await this.todoManager.updateTodo(id, todo);
   }
 }

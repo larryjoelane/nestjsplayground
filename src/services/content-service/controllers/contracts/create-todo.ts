@@ -1,9 +1,9 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 
-export class UpdateTodo {
+export class CreateTodo {
 
   @ApiModelProperty()
-  id: number;
+  id: number = null;
 
   @ApiModelProperty()
   label: string;
